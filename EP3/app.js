@@ -17,7 +17,7 @@ const jsxHeading = () =>  <h1 id ="heading" className="head" tabIndex="5">Vedans
 
 // 1. Functional Component
 
-const elem =     <span>React element inside React element</span>;
+const elem =   <span>React element inside React element</span>;
 
 
 const HeadingComponent  = (
