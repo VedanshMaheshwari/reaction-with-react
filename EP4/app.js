@@ -18,6 +18,8 @@ import reactDOM from "react-dom";
 
 const appLayout = () => {
     return (
-        <div className ="app"></div>
+        <div className ="app">
+            
+        </div>
     )
 }
