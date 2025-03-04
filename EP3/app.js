@@ -16,9 +16,16 @@ const jsxHeading = () =>  <h1 id ="heading" className="head" tabIndex="5">Vedans
 //React Components - Functional and Class-Based Components 
 
 // 1. Functional Component
-const HeadingComponent = () => {
-    return <h1>Functional Freaking Component</h1>
-}
+
+const elem =     <span>React element inside React element</span>;
+
+
+const HeadingComponent  = (
+    <div> 
+    {elem}
+    <h1>Functional Freaking Component</h1>
+    </div>
+)
 
   
 const Title = () => (
@@ -26,19 +33,19 @@ const Title = () => (
         Renders title component inside the heading component</h1>
 );
 
-const title = (
-    <h1 className="titleHead">
-        Putting react element inside a component</h1>
-);
 
 const FuncHeading = () => (
     <div>
-    {title}
+    {elem}
+    {HeadingComponent}
+    {Title()} 
     <Title/>
+    <Title></Title>
     <h1>Functional Component is Being Rendered</h1>
     </div>
 );
-  
+
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(<FuncHeading />);
