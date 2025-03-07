@@ -19,7 +19,7 @@ const Header = () => {
     return (
         <div className ="header" >
             <div className ="logo-container">
-                <img src = "https://images-platform.99static.com/v84irzbNBd5aawXGKXfH4SEjcn0=/0x0:960x960/500x500/top/smart/99designs-contests-attachments/117/117132/attachment_117132760"></img>
+                <img src = "https://images-platform.99static.com/v84irzbNBd5aawXGKXfH4SEjcn0=/0x0:960x960/500x500/top/smart/99designs-contests-attachments/117/117132/attachment_117132760" className="logo"></img>
             </div>
 
             <div className="nav-items">
@@ -34,12 +34,17 @@ const Header = () => {
         </div>
     )
 };
+ 
+const Body = () =>{
+    return
+}
 
 const AppLayout = () => {
     return (
         <div className ="app">
 
             <Header />
+            <Body /> 
         
         </div>
     )
