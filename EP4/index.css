@@ -21,12 +21,29 @@
 }
 
 .res-card{
+    margin: 40px;
+    padding:5px;
     width: 200px;
     height: 300px;
+   
+}
+
+.res-card:hover{
     border: 1px solid black;
+    cursor: pointer;
 }
 
 .search{
     padding: 10x;
-    
+}
+
+.res-logo{
+    margin: 5px;
+    height :120px;
+    width: 190px;;
+}
+
+.res-container{
+    display: flex;
+    flex-wrap: wrap;
 }
