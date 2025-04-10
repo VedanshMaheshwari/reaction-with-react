@@ -70,10 +70,10 @@ const Body = () =>{
             <RestaurantCard resName = "KFC"/> 
             <RestaurantCard resName = "Aubree"/> 
             <RestaurantCard resname = "Truffles"/> 
-            <RestaurantCard /> 
-            <RestaurantCard /> 
-            <RestaurantCard /> 
-            <RestaurantCard /> 
+            <RestaurantCard resName = "FreshMenu"/> 
+            <RestaurantCard resName = "GroundHUT"/> 
+            <RestaurantCard resName = "Kakke di Hatti"/> 
+            <RestaurantCard  resName/> 
             <RestaurantCard /> 
             <RestaurantCard /> 
             </div>
