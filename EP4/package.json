@@ -2,7 +2,7 @@
   "name": "reaction-with-react",
   "version": "1.0.0",
   "description": "This is reaction-with-ReactJS by Vedansh Maheshwari",
-  "main": "app.js",
+  "main": "App.js",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",

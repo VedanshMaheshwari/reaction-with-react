@@ -30,33 +30,30 @@ const Header = () => {
                     <li>Cart</li>
                 </ul>
             </div>
-
         </div>
     )
 };
  
-// const styleCard = {
-//     backgroundColor: "#f0f0f0",
 
-// };
+const styleCard = {
+    backgroundColor: "#f0f0f0",
+
+};
 
 
-//Inline CSS - Style takes JAVASCRIPT OBJECT:
 
-const RestaurantCard = (props) =>{
+const RestaurantCard = (props) => {
     return (
         <div className="res-card" style={{
-            backgroundColor: "#f0f0f0",
+            backgroundColor: "yellow",
         }}>
-            <img  className = "res-logo" alt = "res-img" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/x4uyxvihmg8qa3pddkgf"/>
-            <h3>{props.resName}</h3> 
+            <img className="res-logo" alt="res-img" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/x4uyxvihmg8qa3pddkgf" />
+            <h3>{props.resName}</h3>
             <h4>Biryani, North Indian</h4>
             <h4>4.4 Star</h4>
             <h4>ETA 38 Mins</h4>
-
-            {/* THE DATA IS HARD CODED ITS NOT DYNAMIC */}
         </div>
-    )
+    );
 }
 
 const Body = () =>{
@@ -73,7 +70,7 @@ const Body = () =>{
             <RestaurantCard resName = "FreshMenu"/> 
             <RestaurantCard resName = "GroundHUT"/> 
             <RestaurantCard resName = "Kakke di Hatti"/> 
-            <RestaurantCard  resName/> 
+            <RestaurantCard  resName = "Vedansh"/> 
             <RestaurantCard /> 
             <RestaurantCard /> 
             </div>
@@ -84,10 +81,8 @@ const Body = () =>{
 const AppLayout = () => {
     return (
         <div className ="app">
-
             <Header />
-            <Body /> 
-        
+            <Body />         
         </div>
     )
 };
