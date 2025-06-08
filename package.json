@@ -1,0 +1,28 @@
+{
+  "name": "reaction-with-react",
+  "version": "1.0.0",
+  "description": "This is how I learnt React.JS",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VedanshMaheshwari/reaction-with-react.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Vedansh M",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VedanshMaheshwari/reaction-with-react/issues"
+  },
+  "homepage": "https://github.com/VedanshMaheshwari/reaction-with-react#readme",
+  "devDependencies": {
+    "parcel": "^2.15.2"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
+}
