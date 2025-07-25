@@ -50,7 +50,7 @@ const resList = [
                         "Fast Food",
                         "Snacks"
                       ],
-                      "avgRating": 4.3,
+                      "avgRating": 4.1,
                       "parentId": "972",
                       "avgRatingString": "4.3",
                       "totalRatingsString": "2.8K+",
@@ -2019,18 +2019,7 @@ const resList = [
                   }
 ];
 
-const RestaurantCard = (props) => {
-    const {resData} = props;
-    return (
-        <div className='res-cards' style={styleCard}>
-            <img className='res-logo' src= {"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + resData.info.cloudinaryImageId} />
-            <h3>{resData.info.name}</h3>
-            <h4>{resData.info.cuisines.join(",  ")}</h4>
-            <h4>{resData.info.avgRating }</h4>
 
-        </div>
-    )
-} 
 
 
 const Body = () =>{
@@ -2038,21 +2027,48 @@ const Body = () =>{
         <div className='body'>
             <div className='search'>search</div>
             <div className='res-container'>
-                {/* <RestaurantCard resName = "Meghana Foods" cuisine="biryani" rating ="4.4 Stars" chosenIcon = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/x4uyxvihmg8qa3pddkgf"/>
-                <RestaurantCard resName = "KFC" cuisine="Fast Food" rating = "3.5 Stars" chosenIcon="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/12/9/4398bfb2-6948-484a-9613-2d7628a2457a_588619.JPG" />
-                <RestaurantCard resName="THe Filter Coffee" cuisine ="South India" rating = "4.5 Stars" chosenIcon="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2025/4/22/87c1f839-f566-4b74-af4a-1e071d5dfb5d_944432.jpg"/>
-                <RestaurantCard resName ="Indian Coffee House" cuisine="Sweets" rating="4.0 Stars" chosenIcon="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/9/20/b74422af-6bba-4122-a93f-7bbb847921c4_601010.jpg"/> */}
-       
-                <RestaurantCard resData  = {resList[0]} />
+                {/* This is not a good way to do it. What if there were. we need to create a loop.*/}
+                {/* We can use map function to create a loop. */}
+                {/* <RestaurantCard resData  = {resList[0]} />
                 <RestaurantCard resData  = {resList[1]} />
                 <RestaurantCard resData  = {resList[2]} />
                 <RestaurantCard resData  = {resList[3]} />
                 <RestaurantCard resData  = {resList[4]} />
                 <RestaurantCard resData  = {resList[5]} />
+                <RestaurantCard resData  = {resList[6]} />
+                <RestaurantCard resData  = {resList[7]} />
+                <RestaurantCard resData  = {resList[8]} />
+                <RestaurantCard resData  = {resList[9]} />
+                <RestaurantCard resData  = {resList[10]} />
+                <RestaurantCard resData  = {resList[11]} />
+                <RestaurantCard resData  = {resList[12]} />
+                <RestaurantCard resData  = {resList[13]} /> */}
+                {
+                  resList.map((variable) => (
+                  <RestaurantCard key = {variable.info.id} resData = {variable}/>
+                ))}
+
+                {/* Not using key(not acceptable) <<<< index as key << unique id (BEST PRACTICE) */}
             </div> 
         </div>
     )
 }
+
+const RestaurantCard = (props) => {
+    const {resData} = props;
+
+    //Destructuring the props
+    const { name, cuisines, avgRating, cloudinaryImageId } = resData?.info;
+    return (
+        <div className='res-cards' style={styleCard}>
+            <img className='res-logo' src= {"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + resData.info.cloudinaryImageId} />
+            <h3>{name}</h3>
+            <h4>{cuisines.join(",    ")}</h4>
+            <h4>{avgRating }</h4>
+
+        </div>
+    )
+} 
 
 const AppLayout = () => {
     return (
