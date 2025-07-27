@@ -1,13 +1,35 @@
 import RestaurantCard from "./RestaurantCard.jsx";
 import { resList } from "../utils/mockdata";
-
-import {useState } from 'react';
+import Shimmer from "./Shimmer.jsx";
+import {useState, useEffect } from 'react';
 
 
 const Body = () =>{
     // State Variable - SUPER POWERFUL VARIABLE
-    let [ListofRestaurants, setlistofRestaurants] = useState(resList);
-    
+    const [ListofRestaurants, setlistofRestaurants] = useState([]);
+    const [filteredRestaurants,setFilteredRestaurants] = useState([]);
+    const [isFiltered, setIsFiltered] = useState(false);
+    const [searchText,setSearchText] = useState("");
+    useEffect(()=>{
+        fetchData();
+    },[]);
+
+    const fetchData = async () => {
+        const data = await fetch ( 
+            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.97530&lng=77.59100&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+        );
+
+        const json = await data.json();
+
+        console.log (json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
+
+        //USE OPTIONAL CHAINING ALWAYS
+        const restaurants = json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants;
+        setlistofRestaurants(restaurants);
+        setFilteredRestaurants(restaurants);
+
+    }
+
     // Normal JS Variable
     // let ListofRestaurants = []\nu;f -> value  to be passed;
 
@@ -54,20 +76,61 @@ const Body = () =>{
     //   }
     // ]
 
-    return(
+    // CONDITIONAL RENDERING
+    // if(ListofRestaurants.length === 0){
+    //     return <Shimmer />;
+    // }
+
+    return ListofRestaurants.length === 0 ? (
+     <Shimmer /> 
+    ) : (
         <div className='body'>
             <div className='filter'>
-                <button className="filter-btn" 
+                <div className="search">
+                    <input 
+                        type="text" 
+                        className="search-box" 
+                        value= {searchText} 
+                        onChange={(event) => {
+                            setSearchText(event.target.value);
+                            
+                        }                       
+                    }
+                    />
+                    <button onClick={() => {
+                        //FILTER THE UI AND SHOW THE CARDS FOR TEXT
+                        //Search Text
+                        const filteredRestaurants = ListofRestaurants.filter(
+                            (res)=>{
+                                return res.info.name.toLowerCase().includes(searchText.toLowerCase());
+                            }
+                        )
+                        setFilteredRestaurants(filteredRestaurants);     
+                        console.log(searchText); 
+                    }}>Search</button>
+                </div>
+
+                <button className="filter-btn"
                 onClick  ={() => {
                    //FILTER LOGIC
+                   if(isFiltered){
+                    setFilteredRestaurants(ListofRestaurants);
+                    setIsFiltered(false);
+                   }
+                   else{
                     const filterList = ListofRestaurants.filter(
-                    (res) => res.info.avgRating > 4.5
-                   );
-                   setlistofRestaurants(filterList);
+                        (res) => res.info.avgRating < 4
+                       );
+                       setFilteredRestaurants(filterList);   
+                       setIsFiltered(true);                 
+                   }
+
                    console.log(ListofRestaurants); 
 
                 }}
-                >Top Rated Restaurant</button>
+                >
+                {isFiltered ? "Show All Restaurant" : "Top Rated Restaurant"}
+                </button>
             </div>
             <div className='res-container'>
                 {/* This is not a good way to do it. What if there were. we need to create a loop.*/}
@@ -87,7 +150,7 @@ const Body = () =>{
                 <RestaurantCard resData  = {resList[12]} />
                 <RestaurantCard resData  = {resList[13]} /> */}
                 {
-                  ListofRestaurants.map((variable) => (
+                  filteredRestaurants.map((variable) => (
                   <RestaurantCard key = {variable.info.id} resData = {variable}/>
                 ))}
 
