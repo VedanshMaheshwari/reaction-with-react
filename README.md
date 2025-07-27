@@ -9,3 +9,10 @@ Two types of Export/ Import
 -Named Export/Import
     export const Component;
     import {Component} from "PATH";
+
+...
+# React Hooks:
+Normal JS utility functions by Facebook peeps
+
+- useState()
+- useEffect()
