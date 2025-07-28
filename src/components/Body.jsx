@@ -119,7 +119,7 @@ const Body = () =>{
                    }
                    else{
                     const filterList = ListofRestaurants.filter(
-                        (res) => res.info.avgRating < 4
+                        (res) => res.info.avgRating >= 4.5
                        );
                        setFilteredRestaurants(filterList);   
                        setIsFiltered(true);                 
