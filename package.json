@@ -4,7 +4,7 @@
   "description": "This is how I learnt React.JS",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html", 
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "repository": {
@@ -25,7 +25,9 @@
   },
   "dependencies": {
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "react-router": "6.4",
+    "react-router-dom": "6.4"
   },
   "browserslist": [
     "last 1 chrome version",
