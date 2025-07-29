@@ -2,7 +2,7 @@ import RestaurantCard from "./RestaurantCard.jsx";
 import { resList } from "../utils/mockdata";
 import Shimmer from "./Shimmer.jsx";
 import {useState, useEffect } from 'react';
-
+import { Link } from "react-router-dom";
 
 const Body = () =>{
     // State Variable - SUPER POWERFUL VARIABLE
@@ -152,7 +152,7 @@ const Body = () =>{
                 <RestaurantCard resData  = {resList[13]} /> */}
                 {
                   filteredRestaurants.map((variable) => (
-                  <RestaurantCard key = {variable.info.id} resData = {variable}/>
+                  <Link key = {variable.info.id} to={"/restaurant/"+variable.info.id} ><RestaurantCard resData = {variable}/></Link>
                 ))}
 
                 {/* Not using key(not acceptable) <<<< index as key << unique id (BEST PRACTICE) */}
