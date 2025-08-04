@@ -13,7 +13,7 @@ class UserClass extends React.Component{
     }
 
     componentDidMount(){
-
+        // best place to make API Call
     }
 
     render(){
