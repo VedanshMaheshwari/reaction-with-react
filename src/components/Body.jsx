@@ -3,6 +3,8 @@ import { resList } from "../utils/mockdata";
 import Shimmer from "./Shimmer.jsx";
 import {useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus.js";
+
 
 const Body = () =>{
     // State Variable - SUPER POWERFUL VARIABLE
@@ -15,7 +17,7 @@ const Body = () =>{
         fetchData();
     },[]);
 
-    const fetchData = async () => {
+    const fetchData =   async () => {
         const data = await fetch ( 
             "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.97530&lng=77.59100&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
         );
@@ -81,6 +83,13 @@ const Body = () =>{
     // if(ListofRestaurants.length === 0){
     //     return <Shimmer />;
     // }
+
+    const onlineStatus = useOnlineStatus();
+
+    if(onlineStatus === false){
+        return <h1>You seem to be offline, using RVU wifi? sad. </h1>
+    }
+
 
     return ListofRestaurants.length === 0 ? (
      <Shimmer /> 
