@@ -101,8 +101,7 @@ const Body = () =>{
                     <button onClick={() => {
                         //FILTER THE UI AND SHOW THE CARDS FOR TEXT
                         //Search Text
-                        const filteredRestaurants = ListofRestaurants.filter(
-                            (res)=>{
+                        const filteredRestaurants = ListofRestaurants.filter((res)=>{
                                 return res.info.name.toLowerCase().includes(searchText.toLowerCase());
                             }
                         )
@@ -152,7 +151,7 @@ const Body = () =>{
                 <RestaurantCard resData  = {resList[13]} /> */}
                 {
                   filteredRestaurants.map((variable) => (
-                  <Link key = {variable.info.id} to={"/restaurant/"+variable.info.id} ><RestaurantCard resData = {variable}/></Link>
+                  <Link  key={variable.info.id}  to={"/restaurant/"+variable.info.id} ><RestaurantCard resData = {variable}/></Link>
                 ))}
 
                 {/* Not using key(not acceptable) <<<< index as key << unique id (BEST PRACTICE) */}
