@@ -14,7 +14,7 @@ const Body = () =>{
     const [searchText,setSearchText] = useState("");
     
     useEffect(()=>{
-        fetchData();
+            fetchData();
     },[]);
 
     const fetchData =   async () => {
@@ -95,11 +95,11 @@ const Body = () =>{
      <Shimmer /> 
     ) : (
         <div className='body'>
-            <div className='filter'>
-                <div className="search">
+            <div className='filter flex'>
+                <div className="p-4">
                     <input 
                         type="text" 
-                        className="search-box" 
+                        className="border border-solid border-black  " 
                         value= {searchText} 
                         onChange={(event) => {
                             setSearchText(event.target.value);
@@ -107,7 +107,9 @@ const Body = () =>{
                         }                       
                     }
                     />
-                    <button onClick={() => {
+                    <button 
+                        className=" px-4 py-1 bg-green-100  m-4 rounded-lg" 
+                        onClick={() => {
                         //FILTER THE UI AND SHOW THE CARDS FOR TEXT
                         //Search Text
                         const filteredRestaurants = ListofRestaurants.filter((res)=>{
@@ -119,7 +121,7 @@ const Body = () =>{
                     }}>Search</button>
                 </div>
 
-                <button className="filter-btn"
+                <button className= "px-4 py-1 m-7 bg-green-100 rounded-lg"
                 onClick  ={() => {
                    //FILTER LOGIC
                    if(isFiltered){
@@ -141,7 +143,7 @@ const Body = () =>{
                 {isFiltered ? "Show All Restaurant" : "Top Rated Restaurant"}
                 </button>
             </div>
-            <div className='res-container'>
+            <div className='res-container flex flex-wrap justify-between'>
                 {/* This is not a good way to do it. What if there were. we need to create a loop.*/}
                 {/* We can use map function to create a loop. */}
                 {/* <RestaurantCard resData  = {resList[0]} />
