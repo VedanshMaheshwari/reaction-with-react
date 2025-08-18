@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard.jsx";
+import RestaurantCard, {withLabel} from "./RestaurantCard.jsx";
 import { resList } from "../utils/mockdata";
 import Shimmer from "./Shimmer.jsx";
 import {useState, useEffect } from 'react';
@@ -13,6 +13,7 @@ const Body = () =>{
     const [isFiltered, setIsFiltered] = useState(false);
     const [searchText,setSearchText] = useState("");
     
+    const RestaurantCardOpen = withLabel(RestaurantCard);
     useEffect(()=>{
             fetchData();
     },[]);
@@ -24,7 +25,7 @@ const Body = () =>{
 
         const json = await data.json();
 
-        console.log (json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
+        console.log (json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants, ListofRestaurants);
 
         //USE OPTIONAL CHAINING ALWAYS
         const restaurants = json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants;
@@ -162,7 +163,15 @@ const Body = () =>{
                 <RestaurantCard resData  = {resList[13]} /> */}
                 {
                   filteredRestaurants.map((variable) => (
-                  <Link  key={variable.info.id}  to={"/restaurant/"+variable.info.id} ><RestaurantCard resData = {variable}/></Link>
+                  <Link
+                    key={variable.info.id}      
+                    to={"/restaurant/"+variable.info.id} >
+
+                        {/** If the restaurant is promoted then add a promoted label to it- we will have to write the logic*/
+                            variable.info.isOpen ? <RestaurantCardOpen resData = {variable} /> :<RestaurantCard resData = {variable}/>
+                        }
+                        
+                   </Link>
                 ))}
 
                 {/* Not using key(not acceptable) <<<< index as key << unique id (BEST PRACTICE) */}
