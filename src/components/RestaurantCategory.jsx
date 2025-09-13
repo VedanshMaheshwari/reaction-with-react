@@ -1,13 +1,13 @@
 import ItemList from './itemList.jsx';
-import {useState} from 'react';
+
 
 const RestaurantCategory = ({ data , showItems, setShowIndex}) =>{
+   
    const handleClickShowItems = () => {
       setShowIndex();
    };
    
    return (
-   
       <div className=" w-6/12 mx-auto my-4 p-2 shadow-lg bg-gray-100  rounded-lg cursor-pointer">
          <div 
             className="flex justify-between " 
