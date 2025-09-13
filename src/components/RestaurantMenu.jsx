@@ -11,7 +11,6 @@ const RestaurantMenu = () => {
     const resInfo = useRestaurantMenu(resId); 
     const [showIndex, setShowIndex] = useState(null); 
    
-
     if (resInfo === null) return <Shimmer /> 
 
     // Add defensive checks for the API response structure
@@ -27,14 +26,11 @@ const RestaurantMenu = () => {
         (c) => c.card.card['@type'] === 
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
-     
-    console.log(categories)
+    
     return  (
         <div className="text-center">
             <h1 className="font-bold m-6 text-2xl">{name}</h1>
-            <p className="font-bold text-lg">
-                {cuisines.join(", ")}
-            </p>
+            <p className="font-bold text-lg"> {cuisines.join(", ")}</p>
             {/* Category accordions */}
             {categories.map((category , index)=> (
 
@@ -46,8 +42,7 @@ const RestaurantMenu = () => {
                     key={category?.card?.card?.categoryId ?? category?.card?.card?.title}
                     data={category?.card?.card}
                     showItems={index === showIndex && true}
-                    setShowIndex = {()=> setShowIndex(index)}
-                    
+                    setShowIndex = {()=> setShowIndex(index)}   
                 />
             ))}
         </div>
