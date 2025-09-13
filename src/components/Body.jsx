@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus.js";
 
 
-const Body = () =>{
+const Body = () => {
     // State Variable - SUPER POWERFUL VARIABLE
     const [ListofRestaurants, setlistofRestaurants] = useState([]);
     const [filteredRestaurants,setFilteredRestaurants] = useState([]);
@@ -30,14 +30,12 @@ const Body = () =>{
         //USE OPTIONAL CHAINING ALWAYS
         const restaurants = json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants;
         setlistofRestaurants(restaurants);
-        setFilteredRestaurants(restaurants);
-
+        setFilteredRestaurants(restaurants);  
     }
 
     // Normal JS Variable
-    // let ListofRestaurants = []\nu;f -> value  to be passed;
-
-    // let ListofRestaurants = [    
+    // let ListofRestaurants = []    
+    
     //   {
     //     "info": {
     //       "id": "396753",

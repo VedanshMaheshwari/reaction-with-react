@@ -27,7 +27,7 @@ class UserClass extends React.Component{
             userInfo: json,
         })
     }
-
+ 
     componentDidUpdate(){
         console.log("Component did update");
     }
