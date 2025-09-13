@@ -7,19 +7,10 @@ import RestaurantCategory from "./RestaurantCategory";
 
 const RestaurantMenu = () => {
 
-    // const [ resInfo ,setResInfo ] = useState(null);
     const {resId} = useParams();
     const resInfo = useRestaurantMenu(resId); 
-    //console.log(resId);
-    
-    // useEffect(()=>{
-    //      fetchMenu();
-    // },[]);
-    // const fetchMenu = async () => {
-    //     const data = await fetch(MENU_API+resId);         
-    //     const json = await data.json();
-    //     setResInfo(json);
-    // }
+    const [showIndex, setShowIndex] = useState(null); 
+   
 
     if (resInfo === null) return <Shimmer /> 
 
@@ -31,7 +22,6 @@ const RestaurantMenu = () => {
 
     const { name, cuisines } = resInfo.data.cards[2]?.card?.card?.info || {};
     const itemCards = resInfo?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[2]?.card?.card?.itemCards || [];
-    //console.log(resInfo?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
 
     const categories = resInfo?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter( 
         (c) => c.card.card['@type'] === 
@@ -46,10 +36,18 @@ const RestaurantMenu = () => {
                 {cuisines.join(", ")}
             </p>
             {/* Category accordions */}
-            {categories.map((category)=> (
+            {categories.map((category , index)=> (
+
+                //CONTROLLED COMPONENT
+                // For first category, show items by default
+                // For other categories, items are hidden by default
+                // Clicking on category title toggles the visibility of items
                 <RestaurantCategory 
                     key={category?.card?.card?.categoryId ?? category?.card?.card?.title}
                     data={category?.card?.card}
+                    showItems={index === showIndex && true}
+                    setShowIndex = {()=> setShowIndex(index)}
+                    
                 />
             ))}
         </div>

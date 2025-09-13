@@ -29,3 +29,6 @@ Single codebase, deployed as one unit. A single failure can bring down the entir
 A microservices architecture breaks an application into smaller, independent services. Each service is responsible for a specific function (like authentication, payments, or notifications) and communicates via APIs (often HTTP or messaging queues).
 
 SWIGGY API = https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=12.97530&lng=77.59100&carousel=true&third_party_vendor=1
+
+Auto Fill Copilot Setting
+@tag:nextEditSuggestions
