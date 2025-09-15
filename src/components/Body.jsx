@@ -1,10 +1,10 @@
 import RestaurantCard, {withLabel} from "./RestaurantCard.jsx";
 import { resList } from "../utils/mockdata";
 import Shimmer from "./Shimmer.jsx";
-import {useState, useEffect } from 'react';
+import {useState, useEffect, useContext} from 'react';
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus.js";
-
+import UserContext from "../utils/UserContext.js";
 
 const Body = () => {
     // State Variable - SUPER POWERFUL VARIABLE
@@ -85,15 +85,18 @@ const Body = () => {
 
     const onlineStatus = useOnlineStatus();
 
+    const {userName, loggedInUser, setUserName} = useContext(UserContext);
+
     if(onlineStatus === false){
         return <h1>You seem to be offline, using RVU wifi? sad. </h1>
     }
 
-
     return ListofRestaurants.length === 0 ? (
      <Shimmer /> 
     ) : (
+        
         <div className='body'>
+            
             <div className='filter flex'>
                 <div className="p-4">
                     <input 
@@ -119,7 +122,8 @@ const Body = () => {
                         console.log(searchText); 
                     }}>Search</button>
                 </div>
-
+                
+                {/* TOP RATED RESTAURANTS */}
                 <button className= "px-4 py-1 m-7 bg-green-100 rounded-lg"
                 onClick  ={() => {
                    //FILTER LOGIC
@@ -141,7 +145,16 @@ const Body = () => {
                 >
                 {isFiltered ? "Show All Restaurant" : "Top Rated Restaurant"}
                 </button>
+                
+                {/* INPUT BOX */}
+                <div className="flex items-center gap-2">
+                    <label className="mr-2">User Name: </label>
+                    <input type="text" className="border border-b-black p-1" value={loggedInUser} onChange={(e) => setUserName(e.target.value)}/>
+                </div>
             </div>
+            
+
+
             <div className='res-container flex flex-wrap justify-between'>
                 {/* This is not a good way to do it. What if there were. we need to create a loop.*/}
                 {/* We can use map function to create a loop. */}

@@ -1,4 +1,5 @@
 import React from "react";
+import UserContext from "../utils/UserContext";
 
 class UserClass extends React.Component{
 
@@ -34,21 +35,32 @@ class UserClass extends React.Component{
 
     render(){
         const { count} = this.state;
-        // const { name,location } = this.props;
         const { name,location,bio,avatar_url } = this.state.userInfo;
+        
         return (
             <div className="user-card">
+            
                 {/* <h1>Count: {count}</h1>
                 <button onClick={()=>{
                     this.setState({
                         count: this.state.count+1,
                     })
                 }}>Increase Count</button> */}
-                <img src= {avatar_url} alt="" />
-                <h1>Name: {name}</h1>
+
+                <img src={avatar_url} alt="" />
+                <h1>Name: {this.props.name}</h1>
                 <h2>Location: {location}</h2>
                 <h2>Bio: {bio}</h2>
+
+                <div>
+                    User LoggedIn :
+                    <UserContext.Consumer>
+                        {({loggedInUser}) => <h1>{loggedInUser}</h1>}
+                    </UserContext.Consumer>
+                </div>
             </div>
+
+            
         )
     }
 }
