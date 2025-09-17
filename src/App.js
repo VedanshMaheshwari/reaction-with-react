@@ -10,6 +10,7 @@ import RestaurantMenu from './components/RestaurantMenu.jsx';
 import UserContext from "./utils/UserContext";
 import {Provider} from "react-redux";
 import appStore from "./utils/appStore.js";
+import Cart from './components/Cart.jsx';
 // import Grocery from './components/Grocery.jsx';
 
 // const parent = React.createElement("div",{id:"parent"},[
@@ -77,6 +78,10 @@ const appRouter = createBrowserRouter([
                 path: "/restaurant/:resId",
                 element: <RestaurantMenu/>
             },
+            {
+                path: "cart",
+                element: <Cart/>
+            }
         ],
         errorElement : <Error/>,
     },

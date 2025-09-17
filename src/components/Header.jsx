@@ -34,7 +34,7 @@ const Header = () => {
                     <li className="p-4"><Link to="/about">About</Link></li>
                     <li className="p-4"><Link to="/contact">Contact</Link></li>
                     <li className="p-4"><Link to="/grocery">Grocery</Link></li>
-                    <li className="p-4 font-bold size-xl">Cart ({cartItems.length} Items)</li>
+                    <li className="p-4 font-bold size-xl"><Link to="/cart">Cart ({cartItems.length} Items)</Link></li>
                     <button className="login"
                     onClick={()=>{ 
                         btnNameReact === "Login" 

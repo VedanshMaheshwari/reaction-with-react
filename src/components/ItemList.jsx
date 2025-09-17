@@ -7,8 +7,8 @@ const ItemList = ({ items }) => {
     const dispatch = useDispatch(); // dispatch is a function now.
 
 
-    const handleItems = () => {
-        dispatch(addItems("Pizza"));
+    const handleItems = (item) => {
+        dispatch(addItems(item));
     };
     
 
@@ -31,7 +31,7 @@ const ItemList = ({ items }) => {
                         <div className='absolute'>
                             <button 
                             className='bg-black text-white mx-16 p-1 rounded-lg'
-                            onClick={handleItems}
+                            onClick={() => handleItems(item)}
                             > 
                                 Add +
                             </button>
