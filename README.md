@@ -32,3 +32,12 @@ SWIGGY API = https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-hom
 
 Auto Fill Copilot Setting
 @tag:nextEditSuggestions
+
+
+# Redux
+- Install Redux @reduxjs/toolkit and react-redux
+- Build our own store
+- Connect our store
+- Slice (Cartslice)
+- Dispatch (Action)
+- Selector

@@ -8,7 +8,8 @@ import Error from "./components/Error";
 import { createBrowserRouter , Outlet, RouterProvider} from 'react-router-dom';
 import RestaurantMenu from './components/RestaurantMenu.jsx';
 import UserContext from "./utils/UserContext";
-
+import {Provider} from "react-redux";
+import appStore from "./utils/appStore.js";
 // import Grocery from './components/Grocery.jsx';
 
 // const parent = React.createElement("div",{id:"parent"},[
@@ -39,15 +40,15 @@ const AppLayout = () => {
     },[]);
     
     return (
-
+        <Provider store={appStore}>
         <UserContext.Provider value={{loggedInUser: userName, setUserName}}>
         <div className='app'>
     
-                <Header />
-    
+            <Header />
             <Outlet />
         </div>
         </UserContext.Provider>
+        </Provider>
     )
 }
 
